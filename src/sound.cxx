@@ -81,9 +81,9 @@ SoundSystem::SoundSystem ()
 {
   /* Load all SFX files */
   for ( Sound *currsfx = &(sfx[0]) ; currsfx -> fname != NULL ; currsfx++ ) {
-    sf::SoundBuffer *sb = new sf::SoundBuffer;
+    sf::SoundBuffer *sb = new sf::SoundBuffer ;
 
-    sb -> loadFromFile ( currsfx->fname );
+    sb -> loadFromFile ( currsfx->fname ) ;
 
     currsfx -> s  = sb;
   }

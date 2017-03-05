@@ -28,7 +28,11 @@ Unpack the files from the tarball like this:
   ./configure
   make
 
-You can run the game from the directory you downloaded it into - or (as 'root') you can install it into /usr/local/share/games/tuxkart by typing;
+You can run the game from the directory you downloaded it into, by typing its location:
+  
+  src/tuxkart
+
+or (as 'root') you can install it into /usr/local/share/games/tuxkart by typing;
 
  make install
 

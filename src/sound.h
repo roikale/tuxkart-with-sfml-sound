@@ -10,11 +10,13 @@
 #define SOUND_BZZT              8
 #define SOUND_BEEP              9
 #define SOUND_SHOOMF           10
+
+#include <vector>
+#include <SFML/Audio.hpp>
  
 class SoundSystem
 {
   char current_track [ 256 ] ;
-  slScheduler *sched ;
 
 public:
   SoundSystem () ;
@@ -22,10 +24,8 @@ public:
   void update () ;
   void playSfx ( int sound ) ;
 
-  void setSafetyMargin ( float t = 0.25 )
-  {
-    sched -> setSafetyMargin ( t ) ;
-  }
+  sf::Music music;
+  sf::Sound effect;
 
   void  change_track ( char *fname ) ;
   void disable_music () ;

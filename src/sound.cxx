@@ -4,7 +4,7 @@
 struct Sound
 {
    char *fname ;
-   slSample *s ;
+   sf::SoundBuffer *s ;
 } ;
 
 
@@ -29,9 +29,7 @@ static int   sfx_off = FALSE ;
 
 void SoundSystem::disable_music ()
 {
-  sched -> stopMusic () ;
-  sched -> update    () ;  /* Ugh! Nasty Kludge! */
-  sched -> update    () ;  /* Ugh! Nasty Kludge! */
+  music . stop () ;
 
   music_off = TRUE  ;
 }
@@ -53,10 +51,11 @@ void SoundSystem::change_track ( char *fname )
 
 void SoundSystem::enable_music ()
 {
-  sched -> stopMusic () ;
+  music . stop() ;
 
-  if ( current_track [ 0 ] != '\0' )
-    sched -> loopMusic ( current_track ) ;
+  music . openFromFile( current_track ) ;
+  music . setLoop(true) ;
+  music . play() ;
  
   music_off = FALSE ;
 }
@@ -69,35 +68,33 @@ void SoundSystem:: enable_sfx () { sfx_off = FALSE ; }
 
 void SoundSystem::playSfx ( int sfx_num )
 {
-  if ( ! sfx_off )
-    sched -> playSample ( sfx[sfx_num].s, 1, SL_SAMPLE_MUTE, 2, NULL ) ;
+  if (  sfx_off )
+      return;
+
+  Sound *curr_sfx = &( sfx[sfx_num] ) ;
+  effect . setBuffer( *(curr_sfx->s) ) ;
+  effect . play() ;
 }
 
 
 SoundSystem::SoundSystem ()
 {
-  sched = new slScheduler ;
+  /* Load all SFX files */
+  for ( Sound *currsfx = &(sfx[0]) ; currsfx -> fname != NULL ; currsfx++ ) {
+    sf::SoundBuffer *sb = new sf::SoundBuffer;
 
-  setSafetyMargin () ;
+   sb -> loadFromFile ( currsfx->fname )
 
-  for ( Sound *currsfx = &(sfx[0]) ; currsfx -> fname != NULL ; currsfx++ )
-    currsfx -> s  = new slSample ( currsfx -> fname, sched ) ;
+    currsfx -> s  = sb;
+  }
 
   enable_sfx   () ;
-  change_track ( "" ) ;
+  change_track ( "wavs/Boom_boom_boom.wav" ) ;
   enable_music () ;
 }
 
 
 void SoundSystem::update ()
 {
-  /*
-    Comment this next line out if the
-    sound causes big glitches on your
-    IRIX machine!
-  */
-
-  sched -> update () ;
 }
-
 

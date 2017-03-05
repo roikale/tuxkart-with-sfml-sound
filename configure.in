@@ -103,7 +103,6 @@ AC_OUTPUT( Makefile          \
            fonts/Makefile    \
            images/Makefile   \
            models/Makefile   \
-           mods/Makefile     \
            src/Makefile      \
            wavs/Makefile     \
           )

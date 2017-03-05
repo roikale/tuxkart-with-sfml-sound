@@ -4661,7 +4661,7 @@ cat >>confdefs.h <<EOF
 #define TUXKART_DATADIR "$tuxkart_datadir"
 EOF
 
-ac_config_files="$ac_config_files Makefile contrib/Makefile data/Makefile doc/Makefile fonts/Makefile images/Makefile models/Makefile mods/Makefile src/Makefile wavs/Makefile"
+ac_config_files="$ac_config_files Makefile contrib/Makefile data/Makefile doc/Makefile fonts/Makefile images/Makefile models/Makefile src/Makefile wavs/Makefile"
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
 # tests run on this system so they can be shared between configure

@@ -526,7 +526,7 @@ int tuxkart_main ( int num_laps, char *level_name )
   gfx   = new GFX ;
 
   sound = new SoundSystem ;
-  // sound -> change_track ( "mods/Boom_boom_boom.mod" ) ;
+  sound -> change_track ( "wavs/Boom_boom_boom.wav" ) ;
   gui   = new GUI ;
 
   pwSetCallbacks ( keystroke, mousefn, motionfn, reshape, NULL ) ;

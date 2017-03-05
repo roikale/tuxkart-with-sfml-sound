@@ -28,6 +28,11 @@ Unpack the files from the tarball like this:
   ./configure
   make
 
+In some cases (probably because I don't know how to use automake) you may have to add
+missing makefiles by hand before make finishes successfully:
+
+  automake --add-missing
+
 You can run the game from the directory you downloaded it into, by typing its location:
   
   src/tuxkart

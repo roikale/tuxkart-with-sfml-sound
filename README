@@ -14,7 +14,8 @@ and in the file INSTALL or online at http://tuxkart.sf.net
 First, make sure that you have the following packages installed:
 
     * OpenGL (or Mesa 3.0 or later)
-    * PLIB version 1.8.0 or later . 
+    * PLIB version 1.8.0 or later
+    * SFML version 2.4.0 or later
 
 Unpack the files from the tarball like this:
 
